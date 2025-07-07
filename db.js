@@ -1,5 +1,10 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./users.db');
+import sqlite3 from 'sqlite3';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const dbPath = process.env.DATABASE_PATH || './users.db';
+const db = new sqlite3.Database(dbPath);
 
 db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS users (
@@ -10,4 +15,4 @@ db.serialize(() => {
   )`);
 });
 
-module.exports = db;
+export default db;

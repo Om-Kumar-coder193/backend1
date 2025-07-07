@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 const express = require('express');
 const cors = require('cors');
 const db = require('./db');
@@ -27,3 +28,5 @@ app.get('/users', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
+dotenv.config();
